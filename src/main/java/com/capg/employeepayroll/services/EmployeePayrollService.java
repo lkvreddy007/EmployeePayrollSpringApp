@@ -3,9 +3,12 @@ package com.capg.employeepayroll.services;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.capg.employeepayroll.dto.EmployeePayrollDTO;
 import com.capg.employeepayroll.dto.EmployeePayrollData;
 
+@Service
 public class EmployeePayrollService implements IEmployeePayrollService{
 	
 	public List<EmployeePayrollData> getEmployeePayrollData(){

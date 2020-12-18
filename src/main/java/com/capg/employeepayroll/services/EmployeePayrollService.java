@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.capg.employeepayroll.dto.EmployeePayrollDTO;
 import com.capg.employeepayroll.dto.EmployeePayrollData;
+import com.capg.employeepayroll.exceptions.EmployeePayrollException;
 
 @Service
 public class EmployeePayrollService implements IEmployeePayrollService{
@@ -18,7 +19,7 @@ public class EmployeePayrollService implements IEmployeePayrollService{
 	}
 	
 	public EmployeePayrollData getEmployeePayrollDataById(int empId) {
-		return employeePayrollList.get(empId-1);
+		return employeePayrollList.stream().filter(empData->empData.getEmployeeId() == empId).findFirst().orElseThrow(()->new EmployeePayrollException("Employee Not Found"));
 	}
 	
 	public EmployeePayrollData createEmployeePayrollData(EmployeePayrollDTO empPayrollDTO) {
